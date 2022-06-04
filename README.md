@@ -13,10 +13,20 @@ make cuda=1 CUDA_LIB=/path/to/cuda/library/
 we use datasets from two different projects from [European Nucleotide Archive (ENA)](https://www.ebi.ac.uk/ena/browser/home) under accession PRJEB23027 and PRJEB13021. Three datasts under accession ERR2184700, ERR2184710 and ERR2184719 in the project PRJEB23027 are lablelled as D1,D2,D3. Three datasets under accession ERR1676719, ERR1676724 and ERR167672 in the project PRJEB13021 are labelled as D3, D4,D5. 
 
 For D1,D2,D3, we use hg38 FASTA Human Reference Genome as the reference genomes.
-For D4, we use [ECOLI_REFERENCE](ftp://ftp.ensemblgenomes.org/pub/release-29/bacteria//fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.GCA_000005845.2.29.dna.genome.fa.gz) as the reference genomes.
-For D5 and D6, we use [HUMAN_REFERENCE](ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_24/GRCh38.primary_assembly.genome.fa.gz) as the reference genomes.
-
+For D4, we use ECOLI_REFERENCE as the reference genomes.
+```
+wget ftp://ftp.ensemblgenomes.org/pub/release-29/bacteria//fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.GCA_000005845.2.29.dna.genome.fa.gz
+```
+For D5 and D6, we use HUMAN_REFERENCE as the reference genomes.
+```
+wget ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/release_24/GRCh38.primary_assembly.genome.fa.gz
+```
 
 **Usage**
 
+create an index file that links read ids with their signal-level data in the FAST5 files:
+
+```
+./f5c index -d FAB41174-3976885577_Multi/fast5 FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz
+```
 
