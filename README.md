@@ -39,10 +39,10 @@ Next, align the basecalled reads to the reference genome.  minimap2 is used to m
 minimap2 -a -x map-ont hg38.fasta FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz | samtools sort -T tmp -o FAB41174-3976885577_Multi/fastq/FAB41174.sorted.bam
 samtools index FAB41174-3976885577_Multi/fastq/FAB41174.sorted.bam
 ```
-Finally, detect methylated bases. -t denotes how many threads are launched on CPU cores, and -b denotes the batch size.
+Finally, detect methylated bases. -t INT denotes how many threads are launched on CPU cores, and -b FLOAT(K/M/G) denotes the batch size.
 
 ```
-./f5c call-methylation -t 4 -B 4M -r FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz -b FAB41174-3976885577_Multi/fastq/FAB41174.sorted.bam -g hg38.fasta > methylation_calls.tsv
+./f5c call-methylation -t 4 -B 4.0M -r FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz -b FAB41174-3976885577_Multi/fastq/FAB41174.sorted.bam -g hg38.fasta > methylation_calls.tsv
 
 ```
 
