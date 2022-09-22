@@ -8,7 +8,7 @@ CFLAGS   += -g -Wall -O2 -std=c++11
 LDFLAGS  += $(LIBS) -lpthread -lz -rdynamic
 BUILD_DIR = build
 
-BINARY = f5c 
+BINARY = Galaxy-methyl 
 OBJ = $(BUILD_DIR)/main.o \
       $(BUILD_DIR)/meth_main.o \
       $(BUILD_DIR)/f5c.o \
