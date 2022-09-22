@@ -28,7 +28,7 @@ Follow the same steps as in [Nanopolish tutorial](https://nanopolish.readthedocs
 First, create an index file that links read ids with their signal-level data in the FAST5 files:
 
 ```
-./f5c index -d FAB41174-3976885577_Multi/fast5 FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz
+./Galaxy-methyl index -d FAB41174-3976885577_Multi/fast5 FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz
 ```
 Next, align the basecalled reads to the reference genome.  minimap2 is used to map reads to the human genome. The output is piped directly into samtools sort to get a sorted bam file:
 
@@ -39,7 +39,7 @@ samtools index FAB41174-3976885577_Multi/fastq/FAB41174.sorted.bam
 Finally, detect methylated bases. -t INT denotes how many threads are launched on CPU cores, and -b FLOAT(K/M/G) denotes the batch size.
 
 ```
-./f5c call-methylation -t 4 -B 4.0M -r FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz -b FAB41174-3976885577_Multi/fastq/FAB41174.sorted.bam -g hg38.fasta > methylation_calls.tsv
+./Galaxy-methyl call-methylation -t 4 -B 4.0M -r FAB41174-3976885577_Multi/fastq/FAB41174.fastq.gz -b FAB41174-3976885577_Multi/fastq/FAB41174.sorted.bam -g hg38.fasta > methylation_calls.tsv
 
 ```
 
