@@ -10,6 +10,14 @@ cd Galaxy-methyl
 make cuda=1 CUDA_LIB=/path/to/cuda/library/
 ```
 
+**Requirement**
+
+- Galaxy-methyl
+
+- [samtools v1.x](https://www.htslib.org/)
+
+- [minimap2](https://github.com/lh3/minimap2)
+
 **Dataset**
 
 we use datasets from two different projects from [European Nucleotide Archive (ENA)](https://www.ebi.ac.uk/ena/browser/home) under accession PRJEB23027 and PRJEB13021. Three datasts under accession ERR2184700, ERR2184710 and ERR2184719 in the project PRJEB23027 are lablelled as D1,D2,D3. Three datasets under accession ERR1676719, ERR1676724 and ERR167672 in the project PRJEB13021 are labelled as D3, D4,D5. 
