@@ -89,7 +89,7 @@ void ReadDB::load(const std::string& input_reads_filename)
                 name = fields[0];
                 path = fields[1];
                 int index = path.find("\/",0);
-            path = "/home/mdl/ypf5071/methylation_data/NA12878.native.r9.timp.062216.fast5/fast5"+path.substr(index+1);
+          //  path = "/home/mdl/ypf5071/methylation_data/NA12878.native.r9.timp.062216.fast5/fast5"+path.substr(index+1);
 
             //   path="/home/ubuntu/methylation_small"; 
                m_data[name].signal_data_path = path;
