@@ -1458,7 +1458,7 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
 
 
 
-   /*
+   
 
     // Aggregate score
 
@@ -1517,7 +1517,7 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
     }
 
 
-*/
+
  
 
       //cuda data
