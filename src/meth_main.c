@@ -231,7 +231,7 @@ void* pthread_post_processor(void* voidargs){
    //output and free
   if(batch_id%3==2)
    {
- //    output_db(core, db);
+      output_db(core, db);
       for (int i = 0; i <  core->total_num_reads; ++i) {
         delete core->site_score_map[i];
       }
