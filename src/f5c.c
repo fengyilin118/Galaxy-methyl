@@ -1014,13 +1014,13 @@ void output_db(core_t* core, db_t* db) {
         }
     }
 
-    core->sum_bases += db->sum_bases;
+   // core->sum_bases += db->sum_bases;
    
     core->bad_fast5_file += db->bad_fast5_file;
     core->ultra_long_skipped += db->ultra_long_skipped;
 
     int32_t i = 0;
-    
+  //core->total_reads+=core->total_num_reads;    
     for (i = 0; i < core->total_num_reads; i++){
             
             char* qname = core->qname[i];

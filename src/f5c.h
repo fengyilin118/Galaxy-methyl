@@ -325,7 +325,7 @@ typedef struct {
 
     //stats //set by the load_db
     int64_t sum_bases;
-    
+     int64_t total_reads;
     int64_t bad_fast5_file; //empty fast5 path returned by readdb, could not open fast5
     int64_t ultra_long_skipped; //ultra long reads that are skipped
 
