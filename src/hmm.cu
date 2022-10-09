@@ -850,7 +850,7 @@ void hmm_cuda(core_t *core, db_t* db, int batch_id)
 
 
     core->total_num_reads += nreads_new;
-    if(batch_id%3==2)
+   if(batch_id%3==2)
     {
      
          profile_hmm_score_cuda(core, db); 
@@ -1419,9 +1419,11 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
       core->site_score_map[i] = new std::map<int, ScoredSite>; 
       NULL_CHK(core->site_score_map[i]);
    }
-   fprintf(stderr,"total_num_reads %d\n",core->total_num_reads);
-  
-   cudaMemcpy(core->unmethylated_score, lp_end, num_groups*sizeof(float),cudaMemcpyDeviceToHost);
+  core->total_reads=core->total_reads+core->total_num_reads;
+  core->sum_bases=core->sum_bases+core->sum_read_len;
+  fprintf(stderr,"total_num_reads %d %d\n",core->total_num_reads,core->total_reads);
+  fprintf(stderr,"sum_bases %d %d\n",core->sum_read_len,core->sum_bases);   
+cudaMemcpy(core->unmethylated_score, lp_end, num_groups*sizeof(float),cudaMemcpyDeviceToHost);
     CUDA_CHK();
 
     cudaMemcpy(kmer_ranks, host_mcpg_kmer_ranks, sizeof(uint32_t)*num_groups*250, cudaMemcpyHostToDevice);

@@ -739,8 +739,8 @@ ret_status_t load_db2(core_t* core, db_t* db) { //separately load fast5 for mult
                         continue;
                     }
                 }
-
-                std::string qname = bam_get_qname(record);
+               db->total_reads++; // candidate read
+               std::string qname = bam_get_qname(record);
                 t = realtime();
                 //todo : make efficient (redudantly accessed below, can be combined with it?)
                 int64_t read_length=core->readbb->get_read_sequence(qname).size();

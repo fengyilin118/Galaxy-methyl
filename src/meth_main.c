@@ -227,7 +227,7 @@ void* pthread_post_processor(void* voidargs){
         fprintf(stderr, "[%s::%.3f*%.2f] Signal got by post-processor thread!\n", __func__,
                 realtime() - realtime0, cputime() / (realtime() - realtime0));
     }
-
+  // core->total_reads += db->total_reads;
    //output and free
   if(batch_id%3==2)
    {
@@ -236,7 +236,8 @@ void* pthread_post_processor(void* voidargs){
         delete core->site_score_map[i];
       }
       free(core->site_score_map);
-      core->total_num_reads=0;
+     //core->total_reads+=core->total_num_reads;  
+    core->total_num_reads=0;
    }
    
     free_db_tmp(db);
@@ -845,10 +846,8 @@ int meth_main(int argc, char* argv[], int8_t mode) {
 #endif
 
 
-    fprintf(stderr, "[%s] total entries: %ld, qc fail: %ld, could not calibrate: %ld, no alignment: %ld, bad fast5: %ld",
-             __func__,(long)core->total_reads, (long)core->qc_fail_reads, (long)core->failed_calibration_reads, (long)core->failed_alignment_reads, (long)core->bad_fast5_file);
-    fprintf(stderr,"\n[%s] total bases: %.1f Mbases",__func__,core->sum_bases/(float)(1000*1000));
-
+    fprintf(stderr, "[%s] total processed entries: %ld, total processed bases: %.1f Mbases (bad reads are not included)",
+             __func__,(long)core->total_reads, core->sum_bases/(float)(1000*1000) );
     fprintf(stderr, "\n[%s] Data loading time: %.3f sec", __func__,core->load_db_time);
     fprintf(stderr, "\n[%s]     - bam load time: %.3f sec", __func__, core->db_bam_time);
     fprintf(stderr, "\n[%s]     - fasta load time: %.3f sec", __func__, core->db_fasta_time);
