@@ -1061,7 +1061,7 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
      CUDA_CHK();
 
     
-     fprintf(stderr,"num_groups %d, malloc_group %d\n ",num_groups, malloc_num_groups);
+    // fprintf(stderr,"num_groups %d, malloc_group %d\n ",num_groups, malloc_num_groups);
    uint32_t* host_num_rows = (uint32_t*)malloc(sizeof(uint32_t) * num_groups);
     uint32_t* host_sub_start_pos = (uint32_t*)malloc(sizeof(uint32_t) * num_groups); 
     uint32_t* host_sub_end_pos = (uint32_t*)malloc(sizeof(uint32_t) * num_groups);
@@ -1183,7 +1183,7 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
     int* host_read_id = (int*)malloc(sizeof(int)*num_groups);
 
 
-    fprintf(stderr,"num_block %d\n",num_block);
+   // fprintf(stderr,"num_block %d\n",num_block);
 
      
     ptr_t matrix_size = 0;
@@ -1360,7 +1360,7 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
     CUDA_CHK();
     cudaMemcpy(cpgmodels, core->cpgmodel, MAX_NUM_KMER_METH * sizeof(model_t), cudaMemcpyHostToDevice);
     CUDA_CHK();
-    fprintf(stderr,"matrix size %d\n", matrix_size);
+   // fprintf(stderr,"matrix size %d\n", matrix_size);
 
      cumemcpy_size+=num_groups * sizeof(ptr_t);
      cumemcpy_size+= sizeof(ptr_t)*(num_groups+1);
@@ -1401,7 +1401,7 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
 
     blockPerGrid = num_block/threadPerBlock + 1;
     free_mem=cuda_freemem(cuda_device_num);
-      fprintf(stderr,"blocks %d\n",blockPerGrid);
+     // fprintf(stderr,"blocks %d\n",blockPerGrid);
     profile_fill_kernel<<<blockPerGrid, threadPerBlock>>>(group_id, read_id, block_id,transitions,
         matrix,matrix_ptr, num_rows,  num_cols, kmer_ranks_ptr,  kmer_ranks, event_start_idx, event_stride, scalings, cpgmodels, 
         event_ptr, event_table, scores, hmm_flags, pre_flank, pre_flank_ptr, post_flank, post_flank_ptr,
@@ -1421,8 +1421,8 @@ void profile_hmm_score_cuda(core_t *core, db_t* db)
    }
   core->total_reads=core->total_reads+core->total_num_reads;
   core->sum_bases=core->sum_bases+core->sum_read_len;
-  fprintf(stderr,"total_num_reads %d %d\n",core->total_num_reads,core->total_reads);
-  fprintf(stderr,"sum_bases %d %d\n",core->sum_read_len,core->sum_bases);   
+ // fprintf(stderr,"total_num_reads %d %d\n",core->total_num_reads,core->total_reads);
+ // fprintf(stderr,"sum_bases %d %d\n",core->sum_read_len,core->sum_bases);   
 cudaMemcpy(core->unmethylated_score, lp_end, num_groups*sizeof(float),cudaMemcpyDeviceToHost);
     CUDA_CHK();
 
@@ -1431,10 +1431,10 @@ cudaMemcpy(core->unmethylated_score, lp_end, num_groups*sizeof(float),cudaMemcpy
      cumemcpy_size+=sizeof(uint32_t)*num_groups*250;
      core->memcpy_size+=cumemcpy_size/1024/1024;
 
-     fprintf(stderr,"memcpy_size %d\n",core->memcpy_size);
+   //  fprintf(stderr,"memcpy_size %d\n",core->memcpy_size);
     
     blockPerGrid = num_groups/threadPerBlock + 1;
-    fprintf(stderr,"blocks %d\n",blockPerGrid);
+  //  fprintf(stderr,"blocks %d\n",blockPerGrid);
  
     profile_initialize_kernel<<<blockPerGrid,threadPerBlock>>>( matrix, matrix_ptr, num_rows, num_cols, num_groups);
     cudaDeviceSynchronize();

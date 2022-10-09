@@ -207,7 +207,7 @@ void* pthread_post_processor(void* voidargs){
     pthread_exit(0);
     */
 
-   fprintf(stderr,"output start \n");
+  // fprintf(stderr,"output start \n");
 
     pthread_arg_meth* pt_arg = (pthread_arg_meth*)voidargs;
     db_t* db = pt_arg->db;
