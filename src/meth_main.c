@@ -798,14 +798,18 @@ int meth_main(int argc, char* argv[], int8_t mode) {
                 NEG_CHK(ret);
             }
 
-            ret = pthread_create(&core->tid_hmm, NULL, pthread_hmm ,  (void*)(pt_arg));
-            NEG_CHK(ret);
+           // ret = pthread_create(&core->tid_hmm, NULL, pthread_hmm ,  (void*)(pt_arg));
+           // NEG_CHK(ret);
 
             if(batch_id>0)
             {
                 int ret = pthread_join(tid_pp, NULL);
                 NEG_CHK(ret);
              }
+
+            ret = pthread_create(&core->tid_hmm, NULL, pthread_hmm ,  (void*)(pt_arg));
+            NEG_CHK(ret);
+
             //post-process thread launch (output and freeing thread)
              ret = pthread_create(&tid_pp, NULL, pthread_post_processor, (void*)(pt_arg));
              

@@ -1021,7 +1021,7 @@ void output_db(core_t* core, db_t* db) {
 
     int32_t i = 0;
   //core->total_reads+=core->total_num_reads;    
-    for (i = 0; i < core->total_num_reads; i++){
+    for (i = 0; i < core->pre_total_num_reads; i++){
             
             char* qname = core->qname[i];
             char* contig = core->m_hdr->target_name[core->bam_rec[i]->core.tid];
@@ -1050,7 +1050,7 @@ void output_db(core_t* core, db_t* db) {
     }
 
    
-    for(int i=0;i<core->total_num_reads;i++)
+    for(int i=0;i<core->pre_total_num_reads;i++)
     {
        bam_destroy1(core->bam_rec[i]);
        free(core->qname[i]);
