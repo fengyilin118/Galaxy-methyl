@@ -479,6 +479,7 @@ typedef struct {
     //methylation
     bam1_t** bam_rec;
     char** qname;
+     int32_t pre_total_num_reads=0;
     int32_t total_num_reads = 0;
     char* host_read;
     ptr_t* host_read_ptr;

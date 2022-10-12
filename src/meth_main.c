@@ -232,12 +232,12 @@ void* pthread_post_processor(void* voidargs){
   if(batch_id%3==2)
    {
       output_db(core, db);
-      for (int i = 0; i <  core->total_num_reads; ++i) {
+      fprintf(stderr,"total_num_reads %d\n", core->pre_total_num_reads);      
+      for (int i = 0; i <  core->pre_total_num_reads; ++i) {
         delete core->site_score_map[i];
       }
       free(core->site_score_map);
-     //core->total_reads+=core->total_num_reads;  
-    core->total_num_reads=0;
+   core->pre_total_num_reads=0;
    }
    
     free_db_tmp(db);

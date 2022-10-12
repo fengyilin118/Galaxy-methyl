@@ -733,8 +733,9 @@ void hmm_cuda(core_t *core, db_t* db, int batch_id)
 {
    
     uint32_t num_reads =  db->n_bam_rec;
-
-  
+   if(batch_id%3==0)
+      core->total_num_reads=0;
+ // fprintf(stderr,"total_num_reads %d num_reads %d\n",core->total_num_reads, num_reads); 
     if(core->total_num_reads == 0)
    {
         core->host_read_ptr = (ptr_t*)malloc(sizeof(ptr_t)*(num_reads+1));
@@ -1623,7 +1624,7 @@ cudaMemcpy(core->unmethylated_score, lp_end, num_groups*sizeof(float),cudaMemcpy
 
       core->unmethylated_score = NULL;
       core->methylated_score = NULL;
-
+      core->pre_total_num_reads=core->total_num_reads;
       core->ref_seq.clear();
 }
 

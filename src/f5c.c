@@ -1058,7 +1058,7 @@ void output_db(core_t* core, db_t* db) {
     free(core->bam_rec);
     free(core->qname);
 
-    core->total_num_reads = 0;
+   // core->total_num_reads = 0;
 
     double output_end = realtime();
     core->output_time += (output_end-output_start);
