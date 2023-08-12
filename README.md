@@ -22,7 +22,7 @@ make cuda=1 CUDA_LIB=/path/to/cuda/library/
 
 Example datasets used in the Dockerfile are provided by Nanopolish and can be downloaded [here](http://s3.climb.ac.uk/nanopolish_tutorial/methylation_example.tar.gz).
 
-we use datasets from two different projects from [European Nucleotide Archive (ENA)](https://www.ebi.ac.uk/ena/browser/home) under accession PRJEB23027 and PRJEB13021. Three datasts under accession ERR2184700, ERR2184710 and ERR2184719 in the project PRJEB23027 are lablelled as D1,D2,D3. Three datasets under accession ERR1676719, ERR1676724 and ERR167672 in the project PRJEB13021 are labelled as D3, D4,D5. 
+we use datasets from two different projects from [European Nucleotide Archive (ENA)](https://www.ebi.ac.uk/ena/browser/home) under accession PRJEB23027 and PRJEB13021. Three datasts under accession ERR2184700, ERR2184710 and ERR2184719 in the project PRJEB23027 are lablelled as D1,D2,D3. Three datasets under accession ERR1676719, ERR1676724 and ERR167672 in the project PRJEB13021 are labelled as D4, D5, D6. 
 
 For D1,D2,D3, we use [hg38 FASTA Human Reference Genome](https://drive.google.com/file/d/1Ur3xybIzQGSxuqeByyp5OMrpaRJXCsMI/view?usp=sharing) as the reference genomes.
 For D4, we use ECOLI_REFERENCE as the reference genomes.
